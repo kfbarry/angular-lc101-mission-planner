@@ -1,18 +1,26 @@
 .displayBox {
-    height: 275px;
-    width: auto;
+  height: 275px;
+  width: auto;
 }
 
 button {
-    margin: 2px;
-    cursor: pointer;
+  background-color: gold;
+  margin: 2px;
+  cursor: pointer;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
-/* Add an 'active' class to style the background of the 'Add to Cargo Hold' buttons. */
+button:disabled {
+  background-color: lightgrey;
+}
 
+.nearMaxMass {
+  font: italic;
+  color: red;
+}
+/* Add an 'active' class to style the background of the 'Add to Cargo Hold' buttons. */
 
 /* Add the 'nearMaxMass' class style here: */
