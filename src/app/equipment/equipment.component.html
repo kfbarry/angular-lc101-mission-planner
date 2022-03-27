@@ -4,7 +4,9 @@
     <li *ngFor="let item of equipmentItems">
       <button
         [disabled]="
-          !belowMaxItems || !belowMaxMass[equipmentItems.indexOf(item)]
+          !belowMaxItems ||
+          !belowMaxMass[equipmentItems.indexOf(item)] ||
+          alreadySelected[equipmentItems.indexOf(item)]
         "
         (click)="addItem(item)"
       >
@@ -20,7 +22,9 @@
 <div class="displayBox">
   <h3>Cargo Hold: {{ cargoHold.length }}/{{ maxItems }} Spots Filled</h3>
   <ol>
-    <li *ngFor="let equipment of cargoHold">{{ equipment.name }}</li>
+    <li *ngFor="let equipment of cargoHold" (click)="removeItem(equipment)">
+      {{ equipment.name }}
+    </li>
   </ol>
   <p>Mass in Hold: {{ cargoMass }} kg</p>
   <p [class]="nearMaxMass">Mass Budget Remaining: {{ remainingSpace }} kg</p>

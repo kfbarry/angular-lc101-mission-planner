@@ -29,6 +29,7 @@ export class EquipmentComponent implements OnInit {
 
    belowMaxMass: boolean []= [true,true,true,true,true,true,true,true,true]
    belowMaxItems: boolean = true;
+   alreadySelected: boolean []= [false,false,false,false,false,false,false,false,false]
 
    constructor() { }
 
@@ -43,6 +44,7 @@ export class EquipmentComponent implements OnInit {
 
     for (let i=0; i < this.equipmentItems.length; i++){
     this.checkMaxMass(this.equipmentItems[i]);
+    this.checkAlreadySelected(this.equipmentItems[i]);
     }
 
     if (this.cargoMass + 200 >= this.maximumAllowedMass){
@@ -68,6 +70,15 @@ export class EquipmentComponent implements OnInit {
     }
 }
 
+checkAlreadySelected(equipment: object){
+  let index = this.equipmentItems.indexOf(equipment);
+    if (this.cargoHold.includes(equipment)){
+      this.alreadySelected[index]= true;
+    } else {
+      this.alreadySelected[index]= false;
+    }
+  
+}
 calculateMassRemaining(){
  this.remainingSpace = this.maximumAllowedMass - this.cargoMass;
 }
@@ -81,7 +92,22 @@ emptyHold(){
 
   for (let i=0; i < this.equipmentItems.length; i++){
   this.checkMaxMass(this.equipmentItems[i]);
+  this.checkAlreadySelected(this.equipmentItems[i])
   }
+}
+
+removeItem(equipment: object){
+  let objKeys = Object.keys(equipment);
+  let index = this.equipmentItems.indexOf(equipment);
+ this.cargoHold.splice(index,1);
+ this.cargoMass -= equipment[objKeys[1]];
+ this.checkMaxItems();
+ this.calculateMassRemaining()
+
+ for (let i=0; i < this.equipmentItems.length; i++){
+ this.checkMaxMass(this.equipmentItems[i]);
+ this.checkAlreadySelected(this.equipmentItems[i]);
+ }
 }
 
 }
