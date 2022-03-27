@@ -1,22 +1,28 @@
 li:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .displayBox {
-    height: 275px;
-    width: auto;
+  height: 275px;
+  width: auto;
 }
 
 img {
-    width: auto;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  width: auto;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
-/* Add a 'selected' class here to style selected astronaut names a different color. */
+.selected {
+  color: rebeccapurple;
+}
+
+.red {
+  color: red;
+}

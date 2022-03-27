@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './equipment.component.html',
   styleUrls: ['./equipment.component.css']
 })
+
+
 export class EquipmentComponent implements OnInit {
    equipmentItems: object[] = [
        {name: 'Duct Tape', mass: 0.5},
@@ -33,8 +35,9 @@ export class EquipmentComponent implements OnInit {
    ngOnInit() { }
 
    addItem(equipment: object){
+     let objKeys = Object.keys(equipment);
     this.cargoHold.push(equipment);
-    this.cargoMass += equipment.mass;
+    this.cargoMass += equipment[objKeys[1]];
     this.checkMaxItems();
     this.calculateMassRemaining()
 
@@ -49,7 +52,8 @@ export class EquipmentComponent implements OnInit {
 
    checkMaxMass(equipment: object){
      let index = this.equipmentItems.indexOf(equipment);
-      if (equipment.mass + this.cargoMass > this.maximumAllowedMass){
+     let objKeys = Object.keys(equipment);
+      if (equipment[objKeys[1]] + this.cargoMass > this.maximumAllowedMass){
         this.belowMaxMass[index] = false;
       } else {
         this.belowMaxMass[index] = true;
