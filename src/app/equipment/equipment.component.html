@@ -12,7 +12,7 @@
       >
         Add to Cargo Hold
       </button>
-      {{ item.name }}, {{ item.mass }} kg
+      {{ item["name"] }}, {{ item["mass"] }} kg
     </li>
   </ol>
 </div>
@@ -23,7 +23,7 @@
   <h3>Cargo Hold: {{ cargoHold.length }}/{{ maxItems }} Spots Filled</h3>
   <ol>
     <li *ngFor="let equipment of cargoHold" (click)="removeItem(equipment)">
-      {{ equipment.name }}
+      {{ equipment["name"] }}
     </li>
   </ol>
   <p>Mass in Hold: {{ cargoMass }} kg</p>
